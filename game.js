@@ -54,7 +54,8 @@ function displayNextQuestion() {
         endGame();
         return;
     }
-    questionNum.innerText = (qNo + 1) + '/' + totalQuestions;
+    qNo++;
+    questionNum.innerText = qNo + '/' + totalQuestions;
 
     progress.style.width = (240 / questions.length) + "px";
 

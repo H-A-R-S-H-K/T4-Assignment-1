@@ -7,6 +7,7 @@ let finalScore = 0;
 let questionNum = document.querySelector('.question-num');
 let qNo = 0;
 let questionIndex;
+let clicked = false;
 let questions = [   
     {
         question: 'Which HTML tag is used to define an inline style?',
@@ -40,7 +41,8 @@ window.onload = () => {
 }
 
 options.addEventListener("click", (e) => {
-    if (e.target.classList[0] == 'option') {
+    if (e.target.classList[0] == 'option' && !clicked) {
+        clicked = true;
         let option = e.target.children[0].innerText;
         let optionNum = option.charCodeAt(0) - 64;
         checkAnswer(optionNum, e);
@@ -66,6 +68,7 @@ function displayNextQuestion() {
         allOptions[i].innerText = questions[index]['choice' + (i + 1)];
     }
     questionIndex = index;
+    clicked = false;
 }
 
 function checkAnswer(userResponse, e) {
